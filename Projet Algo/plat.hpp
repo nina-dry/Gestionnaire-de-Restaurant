@@ -1,7 +1,9 @@
 #ifndef PLAT_HPP
 #define PLAT_HPP
+#include<string>
 
-class Plat{//creaion classe plat
+
+class Plat{//creation classe plat
     private : //creation attributs privés
         int idPlat;
         std :: string nomPlat;
@@ -10,18 +12,18 @@ class Plat{//creaion classe plat
         double prixPlat;
         int tempsPrepPlat;
 
-    public://creation constructeurs
+    public://creation du constructeur
         Plat(int idPlat,std :: string nomPlat, std :: string descriptionPlat, std :: string typePlat, double prixPlat, int tempsPrepPlat);
 
-        //Methode publiques
+        //Methode publique
         void afficherPlat() const;
 
         //Getters
         int getIdPlat() const;
         std::string getNomPlat() const;
         std::string getDescriptionPlat() const;
-        std::string getTypePLat() const;
-        int getPrixPlat() const;
+        std::string getTypePlat() const;
+        double getPrixPlat() const;
         int getTempsPrepPlat() const;
 
         //Setters
@@ -29,7 +31,7 @@ class Plat{//creaion classe plat
         void setNomPlat(std::string nomPlat);
         void setDescriptionPlat(std::string descriptionPlat);
         void setTypePlat(std::string typePlat);
-        void setPrixPlat(int prixPlat);
+        void setPrixPlat(double prixPlat);
         void setTempsPrepPlat(int tempsPrepPlat);
             
 };
