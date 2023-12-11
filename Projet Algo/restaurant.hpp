@@ -10,12 +10,18 @@
         std::string ville;
         std::string plat;
         std::string type;
+        
+        Plat plat;
     public://creation methodes publiques
         Restaurant( std::string nomRestaurant,
         std::string adresse,
         std::string ville,
         std::string plat,
         std::string type);
+
+        Plat getPlat(){
+            return plat;
+        }
 
     //getters
     int getRestaurant()const;

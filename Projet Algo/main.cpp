@@ -14,6 +14,11 @@
  
 
 int main (int argc, char const* argv[]){
+    Restaurant* restaurant=new Restaurant("Restaurant : ")
+    restaurant->plat.afficher();
+    delete restaurant;
+    restaurant=0;
+    return 0;
 
  
 }
