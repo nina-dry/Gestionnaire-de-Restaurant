@@ -4,6 +4,10 @@
 #include <string>
 #include <iostream>
 
+#include "chef.hpp"
+
+class Chef;
+
 //Création Classe Cuisinier
 class Cuisinier 
 {
@@ -16,10 +20,10 @@ class Cuisinier
         int anneeExpCuisinier;
         std::string specialite;
         int cmdCharge;
+        Chef* chef;
 
     public : 
         //Constructeurs
-        Cuisinier();
         Cuisinier(int idCuisinier, std::string nomCuisinier, std::string prenomCuisinier, int ageCuisinier, int anneeExpCuisinier, std::string specialite, int cmdCharge);
 
         //Getter et Setter pour attributs privés
@@ -31,6 +35,8 @@ class Cuisinier
         std::string setSpecialite();
         void setCmdCharge(int _cmdCharge);
 
+        void assignerChef(Chef* nouveauChef);
+        
         //Affichage 
         void afficherCuisinier();
 
