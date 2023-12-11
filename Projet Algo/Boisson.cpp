@@ -1,64 +1,54 @@
 // Fichier cpp
 #include <iostream>
 #include "Boisson.hpp"
+#include<string>
+
+
+//constrcuteurs par defaut
+Boisson::Boisson(){
+}
+//destrcuteur par defaut
+Boisson::~Boisson(){
+}
 
 // Implémentation du constructeur Boisson
-
-Boisson::Boisson(int idBoisson, bool alccoolBoisson, std::string TypeBoisson,std::string TailleBoisson)
-    : idBoisson(idBoisson), TypeBoisson(TypeBoisson), TailleBoisson(TailleBoisson) {}
-
-
-// Implémentation de la méthode publique
+Boisson::Boisson(std::string typeBoisson, std::string tailleBoisson)
+    : Plat(0, "", "", "", 0.0, 0), typeBoisson(typeBoisson), tailleBoisson(tailleBoisson) {}
 
 
-
-void TypeBoisson::TypeBoisson(std::string TypeBoisson) {
-    TypeBoisson = TypeBoisson;
-}
-void TailleBoisson::TailleBoisson(std::string TailleBoisson) {
-    TypeBoisson = TypeBoisson;
-}
-void alccoolBoisson::alccoolBoisson(bool alccoolBoisson) {
-    alccoolBoisson = alccoolBoisson;
-}
-
-
-
-// Implémentation des getters
-int Boisson::Boisson() const {
-    return idBoisson;
-}
-
+// Getters de tous les attributs privés de boisson
 std::string Boisson::getTypeBoisson() const {
-    return TypeBoisson;
+    return typeBoisson;
 }
 
-std::string TailleBoisson::getTailleBoisson() const {
-    return TailleBoisson;
-
-} 
-// Implémentation des setters
-
-void Boisson::setIdBoisson(int _idBoisson) {
-    idBoisson = _idBoisson;
-}
-void Boisson::setTypeBoisson(std::string _TypeBoisson) {
-    TypeBoisson = _TypeBoisson;
-}
-
-void Boisson::setTailleBoisson(std::string _TypeBoisson) {
-    TailleBoisson= _TailleBoisson;
+std::string Boisson::getTailleBoisson() const {
+    return tailleBoisson;
 }
 
 
+//Setters de tous les attributs privés de boisson
+void Boisson::setTypeBoisson(std::string _typeBoisson) {
+    typeBoisson = _typeBoisson;
+}
 
-// Affichage des données des Boisson
-void TypeBoisson::TypeBoisson() const {
-    std::cout << "Type de la boisson : " << TypeBoisson() << std::endl;
+void Boisson::setTailleBoisson(std::string _tailleBoisson) {
+    tailleBoisson= _tailleBoisson;
 }
-void TailleBoisson::TailleBoisson() const {
-    std::cout << "Taille de la boisson : " << TailleBoisson() << std::endl;
+
+// Implémentation de la méthode pour copier les informations de la classe plat dans la classe entrée
+void Boisson::copierInfosPlat(const Plat& plat) {
+    // Appeler les méthodes setters de PlatPrincipal avec les valeurs appropriées de Plat
+    setNomPlat(plat.getNomPlat());
+    setPrixPlat(plat.getPrixPlat());
+    setDescriptionPlat(plat.getDescriptionPlat());
+    setTypePlat(plat.getTypePlat());
 }
-void alccoolBoisson::alccoolBoisson(bool alccoolBoisson) {
-    alccoolBoisson = alccoolBoisson;
+
+
+// methode pour afficher entrées
+void Boisson::afficherBoisson() const {
+    std::cout << "Type de Boisson : " << typeBoisson << std::endl;
+    std::cout << "Taille de la Boisson : " << tailleBoisson << std::endl;
+    //appeler la méthode afficher plat pour avoir tous les autres attributs communs
+    afficherPlat();
 }

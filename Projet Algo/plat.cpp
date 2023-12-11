@@ -7,6 +7,16 @@
 
 Plat::Plat(int idPlat, std :: string nomPlat, std :: string descriptionPlat, std :: string typePlat, double prixPlat, int tempsPrepPlat) : idPlat(idPlat), nomPlat(nomPlat), descriptionPlat(descriptionPlat), typePlat(typePlat), prixPlat(prixPlat), tempsPrepPlat(tempsPrepPlat) {}
 
+//constructeur par défaut
+Plat::Plat() {
+    // Initialiser les attributs à des valeurs par défaut si nécessaire
+    idPlat = 0;
+    nomPlat = "";
+    descriptionPlat = "";
+    typePlat = "";
+    prixPlat = 0.0;
+    tempsPrepPlat = 0;
+}
 
 // Getters de tous les attributs privés de Plat
 int Plat::getIdPlat() const {

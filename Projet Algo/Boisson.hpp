@@ -1,34 +1,32 @@
 #ifndef BOISSON_HPP
 #define BOISSON_HPP
 #include <string>
+#include"plat.hpp"
 
-class Boisson{//creaion classe Boisson
+class Boisson : public Plat{//creaion classe Boisson
     private : //creation attributs privés
-        int idBoisson;
-        std::string TypeBoisson;
-        std::string TailleBoisson;
+        std::string typeBoisson;
+        std::string tailleBoisson;
        
     public://creation methodes publiques
-        Boisson( std::string TypeBoisson ,
-        std::string TailleBoisson);
-        
+        Boisson();//constructeur par défaut
+        ~Boisson();//destructeur par défaut
+        Boisson( std::string typeBoisson, std::string tailleBoisson);
+        Boisson(int idPlat, std::string nomPlat, std::string descriptionPlat, std::string typePlat, double prixPlat, int tempsPrepPlat, std::string typeBoisson, std::string tailleBoisson);
 
+        //Methode publiques
+        void afficherBoisson() const;
 
-//getters
-    int getBoisson()const;
-    std::string TypeBoisson()const;
-    std::string TailleBoisson()const;
-    
+        // Nouvelle méthode pour copier les informations d'un Plat vers Entree
+        void copierInfosPlat(const Plat& plat);
 
-    //setters
-    void setTypeBoisson(std::string TypeBoisson);
-    void setTailleBoisson(std::string TailleBoisson);
+        //getters
+        std::string getTypeBoisson()const;
+        std::string getTailleBoisson()const;
 
-
-
-
-
-
+        //setters
+        void setTypeBoisson(std::string typeBoisson);
+        void setTailleBoisson(std::string tailleBoisson);
 
 
 };

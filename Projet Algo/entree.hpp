@@ -1,27 +1,31 @@
 #ifndef ENTREE_HPP
 #define ENTREE_HPP
 #include<string>
+#include"plat.hpp"
 
 
-class Entree{//creaion classe entrée
+class Entree  : public Plat{//creaion classe entrée
     private : //creation attributs privés
-        int idEntree; 
         std :: string typeEntree; 
         std :: string portionEntree;
 
     public://creation du constructeur
-        Entree(int idEntree,std :: string typeEntree, std :: string portionPlat);
+        Entree();//constructeur par défaut
+        ~Entree();//destructeur par défaut
+        Entree(std :: string typeEntree, std :: string portionPlat);//constructeur avec les caractéristiques d'entree uniquement
+        Entree(int idPlat, std::string nomPlat, std::string descriptionPlat, std::string typePlat, double prixPlat, int tempsPrepPlat, std::string typePlatPrincipal, std::string accompagnementPlatPrincipal);
 
         //Methode publiques
         void afficherEntree() const;
 
-        //Getters
-        int getIdEntree() const;
+        // Nouvelle méthode pour copier les informations d'un Plat vers Entree
+        void copierInfosPlat(const Plat& plat);
+
+        //Getters de entree
         std::string getTypeEntree() const;
         std::string getPortionEntree() const;
 
-        //Setters
-        void setIdEntree(int idEntree);
+        //Setters de entree 
         void setTypeEntree(std::string typeEntree);
         void setPortionEntree(std::string portionEntree);
             

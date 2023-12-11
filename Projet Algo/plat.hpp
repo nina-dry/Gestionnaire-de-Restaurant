@@ -4,7 +4,7 @@
 
 
 class Plat{//creation classe plat
-    private : //creation attributs privés
+    protected : //creation attributs privés
         int idPlat;
         std :: string nomPlat;
         std :: string descriptionPlat; 
@@ -13,6 +13,7 @@ class Plat{//creation classe plat
         int tempsPrepPlat;
 
     public://creation du constructeur
+        Plat();
         Plat(int idPlat,std :: string nomPlat, std :: string descriptionPlat, std :: string typePlat, double prixPlat, int tempsPrepPlat);
 
         //Methode publique

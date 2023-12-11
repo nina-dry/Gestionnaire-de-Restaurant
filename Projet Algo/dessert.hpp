@@ -1,34 +1,34 @@
 #ifndef DESSERT_HPP
 #define DESSERT_HPP
 #include <string>
+#include"plat.hpp"
 
-class Dessert{//creaion classe dessert
+
+class Dessert: public Plat{//creaion classe dessert avec  héritage
     private : //creation attributs privés
-        int idDessert;
-        std::string TypeDessert;
-        std::string PortionDesset;
+        std::string typeDessert;
+        std::string portionDessert;
        
-    public://creation methodes publiques
-        Dessert( std::string TypeDessert ,
-        std::string PortionDesset);
-        
+    public:
+        Dessert();//constructeur par défaut
+        ~Dessert();//destructeur par défaut
+        Dessert( std::string typeDessert, std::string portionDessert);//constructeur dessert uniquement avec ses attributs
+        Dessert(int idPlat, std::string nomPlat, std::string descriptionPlat, std::string typePlat, double prixPlat, int tempsPrepPlat, std::string typeDessert, std::string portionDessert);//constrcuteur desert avec les attributs de plat + les siens
+
+        //Methode publiques
+        void afficherDessert() const;
+
+        // Nouvelle méthode pour copier les informations d'un Plat vers Entree
+        void copierInfosPlat(const Plat& plat);        
 
 
-//getters
-    int getDessert()const;
-    std::string TypeDessert()const;
-    std::string PortionDesset()const;
-    
+        //getters
+        std::string getTypeDessert()const;
+        std::string getPortionDessert()const;
 
-    //setters
-    void setTypeDessert(std::string TypeDessert)const;
-    void setPortionDessert(std::string PortionDesset)const;
-
-
-
-
-
-
+        //setters
+        void setTypeDessert(std::string typeDessert);
+        void setPortionDessert(std::string portionDessert);
 
 
 };

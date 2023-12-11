@@ -1,51 +1,53 @@
 
 // Fichier cpp
 #include <iostream>
-#include "Dessert.hpp"
+#include "dessert.hpp"
+#include <string>
 
-// Implémentation du constructeur dessert
-
-Dessert::Dessert(int idDessert, std::string TypeDessert,std::string PortionDessert)
-    : idPDessert(idDessert), TypeDessert(TypeDessert), PortionDessert(PortionDessert) {}
-
-
-// Implémentation de la méthode publique
-
-
-
-void TypeDessert::TypeDessert(std::string TypeDessert) {
-    TypeDessert = TypeDessert;
+//constrcuteurs par defaut
+Dessert::Dessert(){
 }
+//destrcuteur par defaut
+Dessert::~Dessert(){
+}
+
+// Implémentation du constructeur Dessert
+Dessert::Dessert(std::string typeDessert, std::string PortionDessert)
+    : Plat(0, "", "", "", 0.0, 0), typeDessert(typeDessert), portionDessert(portionDessert) {}
+
+
 
 // Implémentation des getters
-int Dessert::Dessert() const {
-    return idDessert;
-}
-
 std::string Dessert::getTypeDessert() const {
-    return TypeDessert;
+    return typeDessert;
 }
 
-std::string PortionDessert::getPortionDessert() const {
-    return PortionDessert;
-
+std::string Dessert::getPortionDessert() const {
+    return portionDessert;
 } 
-// Implémentation des setters
 
-void dessert::setIddessert(int _idDessert) {
-    idPDessert = _idDessert;
-}
-void Dessert::setTypeDessert(std::string _TypeDessert) {
-    TypeDessert = _TypeDessert;
+//Setters de tous les attributs privés de boisson
+void Dessert::setTypeDessert(std::string _typeDessert) {
+    typeDessert = _typeDessert;
 }
 
-void Dessert::setPortionDessert(std::string _PortionDessert) {
-    PortionDessert= _PortionDessert;
+void Dessert::setPortionDessert(std::string _portionDessert) {
+    portionDessert = _portionDessert;
 }
 
+// Implémentation de la méthode pour copier les informations de la classe plat dans la classe entrée
+void Dessert::copierInfosPlat(const Plat& plat) {
+    // Appeler les méthodes setters de PlatPrincipal avec les valeurs appropriées de Plat
+    setNomPlat(plat.getNomPlat());
+    setPrixPlat(plat.getPrixPlat());
+    setDescriptionPlat(plat.getDescriptionPlat());
+    setTypePlat(plat.getTypePlat());
+}
 
-
-// Affichage des données des PlatPrincipal
-void TypeDessert::TypeDessert() const {
-    std::cout << "Type du dessert : " << TypeDessert() << std::endl;
+// methode pour afficher dessert
+void Dessert::afficherDessert() const {
+    std::cout << "Type de Dessert : " << typeDessert << std::endl;
+    std::cout << "Portion du dessert : " << portionDessert << std::endl;
+    //appeler la méthode afficher plat pour avoir tous les autres attributs communs
+    afficherPlat();
 }

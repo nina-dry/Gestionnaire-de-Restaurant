@@ -1,27 +1,30 @@
 #ifndef PLATPRINCIPAL_HPP
 #define PLATPRINCIPAL_HPP
 #include<string>
+#include"plat.hpp"
 
-
-class PlatPrincipal{//creaion classe pour le plat principal
+class PlatPrincipal : public Plat{//creaion classe pour le plat principal
     private : //creation attributs privés
-        int idPlatPrincipal; 
         std :: string typePlatPrincipal; 
         std :: string accompagnementPlatPrincipal;
 
     public://creation du constructeur
-        PlatPrincipal(int idPlatPrincipal,std :: string typePlatPrincipal, std :: string accompagnementPlatPrincipal);
+        PlatPrincipal();//constructeur par défaut 
+        ~PlatPrincipal();//desctructeur 
+        PlatPrincipal(std::string typePlatPrincipal, std::string accompagnementPlatPrincipal);
+        PlatPrincipal(int idPlat, std::string nomPlat, std::string descriptionPlat, std::string typePlat, double prixPlat, int tempsPrepPlat, std::string typePlatPrincipal, std::string accompagnementPlatPrincipal);
 
-        //Methode publiques
+        //Methode publique pour afficher les détails du plat principal
         void afficherPlatPrincipal() const;
 
-        //Getters
-        int getIdPlatPrincipal() const;
+        // Nouvelle méthode pour copier les informations d'un Plat vers PlatPrincipal
+        void copierInfosPlat(const Plat& plat);
+
+        //Getters uniquement de plat principal
         std::string getTypePlatPrincipal() const;
         std::string getAccompagnementPlatPrincipal() const;
 
         //Setters
-        void setIdPlatPrincipal(int idEntree);
         void setTypePlatPrincipal(std::string typePlatPrincipal);
         void setAccompagnementPlatPrincipal(std::string accompagnementplatPrincipal);
             
