@@ -10,9 +10,9 @@ Client::Client(int idClient, std::string nomClient, int telClient)
 
 // Implémentation de la méthode publique
 
-void Client::NomClient(std::string nomClient) {
-    NomClient = nomClient;
-}
+//void Client::NomClient(std::string nomClient) {
+   //NomClient = nomClient;
+//}
 
 
 // Implémentation des getters
@@ -44,7 +44,7 @@ void Client::setTelClient(int _telClient) {
 
 
 // Affichage des données des clients
-void Client::NomClient() const {
-    std::cout << "Nom du client : " << NomClient() << std::endl;
+void Client::afficherClient() const {
+    std::cout << "Nom du client : " << nomClient << std::endl;
 }
 

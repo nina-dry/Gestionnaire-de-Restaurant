@@ -16,7 +16,7 @@ public:
     Client(int idClient,std::string nomClient, int telClient);
 
     // Méthode publique
-    void NomClient(std::string nomClient) const;
+    void afficherClient() const;
 
     // les getters
     int getIdClient() const;
@@ -29,3 +29,5 @@ public:
     void setTelClient(int telClient);
 
 };
+
+#endif //CLIENT_HPP

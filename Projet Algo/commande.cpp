@@ -4,25 +4,23 @@
 
 // Implémentation du constructeurs Commande
 
-Commande::Commande(int numCommande, Plat platCommande, Client nomClient)
+Commande::Commande(int numCommande, const Plat platCommande, const Client nomClient)
     : numCommande(numCommande), platCommande(platCommande), nomClient(nomClient) {}
 
 
 // Implémentation des méthodes publiques
 
-void Commande::NumCommande(int numCommande) {
-    NumCommande = numCommande;
-}
+//void Commande::NumCommande(int numCommande) {
+   // NumCommande = numCommande;
+//}
 
-void Commande::PlatCommande(int platCommande) {
-    PlatCommande = platCommande;
-}
+//void Commande::PlatCommande(int platCommande) {
+    //PlatCommande = platCommande;
+//}
 
 double Commande::MontantTotal() const {
-    MontantTotal+=PrixPlat;
-    return MontantTotal;
+    return platCommande.getPrixPlat();
 }
-
 
 
 // Implémentation des getters
@@ -42,26 +40,25 @@ Client Commande::getNomClient() const {
 
 // Implémentation des setters
 
-void Commande::setNumCommande(double _numCommande) {
+void Commande::setNumCommande(int _numCommande) {
     numCommande = _numCommande;
 }
-void Commande::setPlatCommande(double _platCommande) {
+void Commande::setPlatCommande(const Plat& _platCommande) {
     platCommande = _platCommande;
 }
 
-void Commande::setNomClient(double _nomClient) {
+void Commande::setNomClient(const Client& _nomClient) {
     nomClient = _nomClient;
 }
 
 
-
-
 // Affichage des données des étudiants
-void Etudiant::afficherCommande() const {
-    std::cout << "Numéro de commande: " << NumCommande() << std::endl;
-    std::cout << "Plats commandés : " << PlatCommande() << std::endl;
+void Commande::afficherCommande() const {
+    std::cout << "Numéro de commande: " << getNumCommande() << std::endl;
+    std::cout << "Nom du client : " << getNomClient().getNomClient() << std::endl;
+    // Affichage du plat commandé
+    std::cout << "Plat commandé : " << std::endl;
+    getPlatCommande().afficherPlat();
+
     std::cout << "Montant total de la commande : " << MontantTotal() << std::endl;
 }
-
-
-

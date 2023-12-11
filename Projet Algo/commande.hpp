@@ -4,6 +4,9 @@
 
 #include <iostream>
 #include <string>
+#include "plat.hpp"
+#include "client.hpp"
+
 
 class Commande {
 private:
@@ -18,9 +21,9 @@ public:
     Commande(int numCommande, Plat platCommande, Client nomClient);
 
     // Méthodes publiques
-    void NumCommande(int numCommande) const;
+    //void NumCommande(int numCommande) const;
 
-    void PlatCommande(Plat platCommande) const;
+    //void PlatCommande(Plat platCommande) const;
     double MontantTotal() const;
     void afficherCommande() const;
 
@@ -34,7 +37,12 @@ public:
 
     // les setters
     void setNumCommande(int numCommande);
-    void setPlatCommande(Plat platCommande);
-    void setNomClient(Client nomClient);
+    void setPlatCommande(const Plat& platCommande);
+    void setNomClient(const Client& nomClient);
 
 };
+
+
+#endif //COMMANDE_HPP
+
+
