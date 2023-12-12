@@ -7,18 +7,21 @@
 #include "plat.hpp"
 #include "client.hpp"
 
+class Client;
+class Plat;
 
 class Commande {
 private:
+    Client* nomClient; // ajout du nom du client 
     int numCommande;
     Plat platCommande;  // Ajout du plat
-    Client nomClient; // ajout du nom du client 
-
+    
 
 
 public:
     // Constructeur
-    Commande(int numCommande, Plat platCommande, Client nomClient);
+    Commande();
+    Commande(int numCommande, Plat platCommande, Client* nomClient);
 
     // Méthodes publiques
     //void NumCommande(int numCommande) const;
@@ -30,15 +33,17 @@ public:
 
 
     // les getters
+    Client* getNomClient() const;
     int getNumCommande() const;
     Plat getPlatCommande() const;
-    Client getNomClient() const;
+    
     
 
     // les setters
+    void setNomClient(Client* _nomClient);
     void setNumCommande(int numCommande);
     void setPlatCommande(const Plat& platCommande);
-    void setNomClient(const Client& nomClient);
+    
 
 };
 

@@ -1,10 +1,15 @@
 // Fichier cpp
 #include <iostream>
+#include <string>
 #include "commande.hpp"
+#include "client.hpp"
+#include "plat.hpp"
 
 // Implémentation du constructeurs Commande
+Commande::Commande(){
 
-Commande::Commande(int numCommande, const Plat platCommande, const Client nomClient)
+}
+Commande::Commande(int numCommande, const Plat platCommande, Client* nomClient)
     : numCommande(numCommande), platCommande(platCommande), nomClient(nomClient) {}
 
 
@@ -33,7 +38,7 @@ Plat Commande::getPlatCommande() const {
     return platCommande;
 }
 
-Client Commande::getNomClient() const {
+Client* Commande::getNomClient() const {
     return nomClient;
 }
 
@@ -47,7 +52,7 @@ void Commande::setPlatCommande(const Plat& _platCommande) {
     platCommande = _platCommande;
 }
 
-void Commande::setNomClient(const Client& _nomClient) {
+void Commande::setNomClient(Client* _nomClient) {
     nomClient = _nomClient;
 }
 
@@ -55,7 +60,7 @@ void Commande::setNomClient(const Client& _nomClient) {
 // Affichage des données des étudiants
 void Commande::afficherCommande() const {
     std::cout << "Numéro de commande: " << getNumCommande() << std::endl;
-    std::cout << "Nom du client : " << getNomClient().getNomClient() << std::endl;
+    std::cout << "Nom du client : " <<nomClient->getNomClient() << std::endl;
     // Affichage du plat commandé
     std::cout << "Plat commandé : " << std::endl;
     getPlatCommande().afficherPlat();

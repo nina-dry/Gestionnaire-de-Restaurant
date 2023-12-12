@@ -1,11 +1,14 @@
 // Fichier cpp
 #include <iostream>
 #include "client.hpp"
+#include "commande.hpp"
 
 // Implémentation du constructeur Client
-
+Client::Client(){
+    
+}
 Client::Client(int idClient, std::string nomClient, int telClient)
-    : idClient(idClient), nomClient(nomClient), telClient(telClient) {}
+    : idClient(idClient), nomClient(nomClient), telClient(telClient), commande(nullptr) {}
 
 
 // Implémentation de la méthode publique
@@ -28,6 +31,10 @@ int Client::getTelClient() const {
     return telClient;
 }
 
+Commande* Client::getCommande(){
+    return commande;
+}
+
 // Implémentation des setters
 
 void Client::setIdClient(int _idClient) {
@@ -41,7 +48,9 @@ void Client::setTelClient(int _telClient) {
     telClient = _telClient;
 }
 
-
+void Client::setCommande(Commande* _commande){
+    commande=_commande;
+}
 
 // Affichage des données des clients
 void Client::afficherClient() const {
