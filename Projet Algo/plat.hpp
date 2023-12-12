@@ -4,7 +4,7 @@
 
 
 class Plat{//creation classe plat
-    protected : //creation attributs privés
+    private : //creation attributs privés
         int idPlat;
         std :: string nomPlat;
         std :: string descriptionPlat; 

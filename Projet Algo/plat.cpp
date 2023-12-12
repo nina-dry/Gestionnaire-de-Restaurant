@@ -70,8 +70,8 @@ void Plat::setTempsPrepPlat(int _tempsPrepPlat) {
 
 // methode pour afficher les  attributs des plats
 void Plat::afficherPlat() const {
-    std::cout << "Nom du Plat : " << getNomPlat() << std::endl;
-    std::cout << "Prix du Plat : " << getPrixPlat() << std::endl;
+    std::cout << "Nom du Plat : " << nomPlat << std::endl;
+    std::cout << "Prix du Plat : " << prixPlat << std::endl;
     std::cout << "Description du plat : " << getDescriptionPlat() << std::endl;
     std::cout << "Type du plat : " << getTypePlat() << std::endl;
 }
