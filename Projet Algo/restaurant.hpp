@@ -1,5 +1,7 @@
 #ifndef RESTAURANT_HPP
 #define RESTAURANT_HPP
+#include"plat.hpp"
+#include<vector>
 
  class Restaurant {//creation class restaurant 
     private: // creation attributs privés
@@ -8,39 +10,40 @@
         std::string nomRestaurant;
         std::string adresse;
         std::string ville;
-        std::string plat;
         std::string type;
+        std::vector<Plat> plats;; //utilisation de la classe Plat
         
-        Plat plat;
+        
     public://creation methodes publiques
-        Restaurant( std::string nomRestaurant,
-        std::string adresse,
-        std::string ville,
-        std::string plat,
-        std::string type);
+        Restaurant(int idRestaurant, std::string nomRestaurant, std::string adresse, std::string ville, int codePostal, std::vector<Plat>plats, std::string type);
 
-        Plat getPlat(){
-            return plat;
-        }
+        //Plat getPlat(){
+          //  return plat;
+        //}
+
+        // Méthode pour ajouter un plat au restaurant
+        void ajouterPlat(const Plat& plat);
+
+        // Méthode publique
+        void afficherRestaurant() const;
 
     //getters
-    int getRestaurant()const;
-    int getcodePostal()const;
-    std::string nomRestaurant()const;
-    std::string adresse()const;
-    std::string ville()const;
-    std::string plat()const;
-    std::string type()const;
+    int getIdRestaurant()const;
+    int getCodePostal()const;
+    std::string getNomRestaurant()const;
+    std::string getAdresse()const;
+    std::string getVille()const;
+    //std::string plat()const;
+    std::string getType()const;
 
     //setters
-    void setnomRestaurant(std::string nomRestaurant)const;
-    void setadresse(std::string adresse)const;
-    void setville(std::string ville)const;
-    void setplat(std::string plat)const;
-    void settype(std::string type)const;
-
-
-
+    void setIdRestaurant(int idRestaurant);
+    void setCodePostal (int codePostal);
+    void setNomRestaurant(std::string nomRestaurant);
+    void setAdresse(std::string adresse);
+    void setVille(std::string ville);
+    //void setplat(std::string plat)const;
+    void setType(std::string type);
 
 
 };
