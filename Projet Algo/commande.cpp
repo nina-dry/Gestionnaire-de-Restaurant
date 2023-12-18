@@ -1,69 +1,78 @@
-// Fichier cpp
-#include <iostream>
 #include <string>
+#include <iostream>
+
 #include "commande.hpp"
 #include "client.hpp"
 #include "plat.hpp"
 
-// Implémentation du constructeurs Commande
-Commande::Commande(){
 
-}
-Commande::Commande(int numCommande, const Plat platCommande, Client* nomClient)
-    : numCommande(numCommande), platCommande(platCommande), nomClient(nomClient) {}
-
-
-// Implémentation des méthodes publiques
-
-//void Commande::NumCommande(int numCommande) {
-   // NumCommande = numCommande;
-//}
-
-//void Commande::PlatCommande(int platCommande) {
-    //PlatCommande = platCommande;
-//}
-
-double Commande::MontantTotal() const {
-    return platCommande.getPrixPlat();
-}
+//Constructeurs
+Commande::Commande() {Client client; Plat plat;}
+Commande::Commande(int numCommande, Client* nomClient) : 
+                   numCommande(numCommande), nomClient(nomClient) {}
 
 
-// Implémentation des getters
-
+//Getter pour attributs privés
 int Commande::getNumCommande() const {
     return numCommande;
 }
-
-Plat Commande::getPlatCommande() const {
-    return platCommande;
-}
-
 Client* Commande::getNomClient() const {
     return nomClient;
 }
 
 
-// Implémentation des setters
-
+//Setters pour attributs privés
 void Commande::setNumCommande(int _numCommande) {
     numCommande = _numCommande;
 }
-void Commande::setPlatCommande(const Plat& _platCommande) {
-    platCommande = _platCommande;
-}
-
 void Commande::setNomClient(Client* _nomClient) {
     nomClient = _nomClient;
 }
 
 
-// Affichage des données des étudiants
-void Commande::afficherCommande() const {
-    std::cout << "Numéro de commande: " << getNumCommande() << std::endl;
-    std::cout << "Nom du client : " <<nomClient->getNomClient() << std::endl;
-    // Affichage du plat commandé
-    std::cout << "Plat commandé : " << std::endl;
-    getPlatCommande().afficherPlat();
+//Ajouter plat commandés à la commande
+void Commande::addPlatCommande(Plat _platCommande) {
+    platCommande.push_back(_platCommande);
+}
 
-    std::cout << "Montant total de la commande : " << MontantTotal() << std::endl;
+//Ajouter prix du plat à la commande 
+void Commande::addPrixCommande(Plat _prixPlatCommande){
+    prixPlatCommande.push_back(_prixPlatCommande);
+}
+
+
+//Calcul montant total de la commande
+double Commande::getMontantTotal() const{
+    double montantTotal = 0.0;
+    for (const auto& plat : prixPlatCommande) {
+        montantTotal += plat.getPrixPlat();
+    }
+    return montantTotal;
+}
+
+
+//Afficher les donnees des commandes
+void Commande::afficherCommande() const {
+    std::cout << "Commande Numero " << numCommande << std::endl;
+    std::cout << "Nom du client : " << nomClient->getNomClient() << std::endl;
+    std::cout << "Plats dans la commande : ";
+    for (const auto& plat : platCommande) {
+        std::cout << plat.getNomPlat() << ", " ; 
+    }
+    std::cout << std::endl;
+    std::cout << "Prix des plats dans la commande : ";
+    for (const auto& plat : prixPlatCommande) {
+        std::cout << plat.getPrixPlat() << ", " ; 
+    }
+    std::cout << std::endl;
+    std::cout << "Montant total de la commande methode  : " << getMontantTotal() << std::endl;
+}
+
+
+//Operateur de comparaison
+bool Commande::estSuperieur(Commande commande){
+   return (getMontantTotal() > commande.getMontantTotal());
+}
+bool operator > (Commande commande1, Commande commande2){
+    return commande1.estSuperieur(commande2);
 }

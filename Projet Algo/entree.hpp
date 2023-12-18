@@ -1,34 +1,45 @@
 #ifndef ENTREE_HPP
 #define ENTREE_HPP
-#include<string>
+
+#include <string>
+#include <iostream>
+
 #include"plat.hpp"
 
 
-class Entree  : public Plat{//creaion classe entrée
-    private : //creation attributs privés
+//Création Classe Entree
+class Entree  : public Plat
+{
+    //Attributs privés
+    private : 
         std :: string typeEntree; 
         std :: string portionEntree;
 
-    public://creation du constructeur
-        Entree();//constructeur par défaut
-        ~Entree();//destructeur par défaut
-        Entree(std :: string typeEntree, std :: string portionPlat);//constructeur avec les caractéristiques d'entree uniquement
-        Entree(int idPlat, std::string nomPlat, std::string descriptionPlat, std::string typePlat, double prixPlat, int tempsPrepPlat, std::string typePlatPrincipal, std::string accompagnementPlatPrincipal);
 
-        //Methode publiques
-        void afficherEntree() const;
+    //Attributs publics
+    public:
+        //Constructeurs
+        Entree();
+            //Avec caractéristiques d'entree uniquement
+        Entree(std :: string typeEntree, std :: string portionPlat); 
+        Entree(int idPlat, std::string nomPlat, std::string descriptionPlat, std::string typePlat, double prixPlat, int tempsPrepPlat, std::string typeEntree, std::string getPortionEntree); //Avec caractéristiques de plat + entree
+        //Destructeur
+        ~Entree();
 
-        // Nouvelle méthode pour copier les informations d'un Plat vers Entree
-        void copierInfosPlat(const Plat& plat);
 
-        //Getters de entree
+        //Getters pour attributs privés
         std::string getTypeEntree() const;
         std::string getPortionEntree() const;
 
-        //Setters de entree 
+
+        //Setters pour attributs privés
         void setTypeEntree(std::string typeEntree);
         void setPortionEntree(std::string portionEntree);
-            
+
+
+        //Afficher les donnees des entrees (+ Plat grâce à methode virtuelle)
+        virtual void afficherPlat() override;
+       
 };
 
-#endif //ENTREE_HPP
+#endif

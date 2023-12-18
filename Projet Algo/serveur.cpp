@@ -1,41 +1,88 @@
+#include <string>
+#include <iostream>
+#include <vector>
+
 #include "serveur.hpp"
 #include "chef.hpp"
 
-#include <string>
-#include <iostream>
+
+//Constructeurs
+Serveur::Serveur() {Commande commande;}
+Serveur::Serveur(int idServeur, std::string nomServeur, int ageServeur, int anneeExpServeur) : 
+                 idServeur(idServeur), nomServeur(nomServeur), ageServeur(ageServeur), anneeExpServeur(anneeExpServeur)  {}
 
 
-//Constructeur
-Serveur::Serveur(int idServeur, std::string nomServeur, std::string prenomServeur, int ageServeur, int anneeExpServeur, int numCmdPrise, int numCmdServie) : 
-                     idServeur(idServeur), nomServeur(nomServeur), prenomServeur(prenomServeur), ageServeur(ageServeur), anneeExpServeur(anneeExpServeur), numCmdPrise(numCmdPrise), numCmdServie(numCmdServie)  {}
-
-
-
-//Getter et Setter pour attributs privés
+//Getters pour attributs privés
+int Serveur::getIdServeur() const {
+    return idServeur;
+}
 std::string Serveur::getNomServeur() const{
     return nomServeur;
 }
-
-
-void Serveur::setNumCmdPrise(int _numCmdPrise){
-    numCmdPrise = _numCmdPrise;
+int Serveur::getAgeServeur() const{
+    return ageServeur;
+}
+int Serveur::getAnneeExpServeur() const{
+    return anneeExpServeur;
+}
+const std::vector<Commande>& Serveur::getCmdPrise() const {
+    return cmdPrise;
+}
+const std::vector<Commande>& Serveur::getCmdServie() const {
+    return cmdServie;
 }
 
-void Serveur::setNumCmdServie(int _numCmdServie){
-    numCmdServie = _numCmdServie;
+
+//Setters pour attributs privés
+void Serveur::setIdServeur(int _idServeur){
+    idServeur = _idServeur;
+}
+void Serveur::setNomServeur(std::string _nomServeur){
+    nomServeur = _nomServeur;
+}
+void Serveur::setAgeServeur(int _ageServeur){
+    ageServeur = _ageServeur;
+}
+void Serveur::setAnneeExpServeur(int _anneeExpServeur){
+    anneeExpServeur = _anneeExpServeur;
+}
+void Serveur::attribuerCommandePrise(const Commande& commande) {
+    cmdPrise.push_back(commande);
+}
+void Serveur::attribuerCommandeServie(const Commande& commande) {
+    cmdServie.push_back(commande);
 }
 
+
+//Association avec classe Commande
+Commande Serveur::getCommande() const {
+    return commande;
+}
+void Serveur::setCommande(Commande _commande) {
+    commande = _commande;
+}
+
+
+//Assigner un chef au cuisinier
 void Serveur::assignerChef(Chef* nouveauChef){
     chef = nouveauChef;
     chef->ajouterServeur(this);
 }
 
 
-
-//Afficher les résultats
+//Afficher les donnees du serveur
 void Serveur::afficherServeur(){
+    std::cout << "Serveur Numero " << idServeur << std::endl;
     std::cout << "Nom du Serveur : " << nomServeur << std::endl;
-    std::cout << "numCmdPrise : " << numCmdPrise << std::endl;
-    std::cout << "numCmdServie : " << numCmdServie << std::endl;
     std::cout << "Sous la supervision du chef : " << chef->getNomChef() << std::endl;
+    std::cout << "Numero de commandes prises : ";
+    for (const auto& commande : cmdPrise) {
+        std::cout << commande.getNumCommande() << ", ";
+    }
+    std::cout << std::endl;
+    std::cout << "Numero de commandes servies : ";
+    for (const auto& commande : cmdServie) {
+        std::cout << commande.getNumCommande() << ", ";
+    }
+    std::cout << std::endl;
 }

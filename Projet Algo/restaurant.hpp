@@ -1,51 +1,57 @@
 #ifndef RESTAURANT_HPP
 #define RESTAURANT_HPP
-#include"plat.hpp"
-#include<vector>
 
- class Restaurant {//creation class restaurant 
-    private: // creation attributs privés
+#include <string>
+#include <iostream>
+#include <vector>
+
+#include "plat.hpp"
+
+
+//Déclaration anticipée
+class Plat;
+
+
+//Création Classe Restaurant
+class Restaurant 
+ {
+    //Attributs privés
+    private:
         int idRestaurant;
-        int codePostal;
         std::string nomRestaurant;
         std::string adresse;
+        int codePostal;
         std::string ville;
-        std::string type;
-        std::vector<Plat> plats;; //utilisation de la classe Plat
-        
-        
-    public://creation methodes publiques
-        Restaurant(int idRestaurant, std::string nomRestaurant, std::string adresse, std::string ville, int codePostal, std::vector<Plat>plats, std::string type);
+        std::string typeRestaurant;
+        std::vector<Plat> listePlats;
+ 
+    //Attributs publiques
+    public:
+        //Constructeurs
+        Restaurant();
+        Restaurant(int idRestaurant, std::string nomRestaurant, std::string adresse, int codePostal, std::string ville, std::string typeRestaurant, std::vector<Plat>listePlats);
 
-        //Plat getPlat(){
-          //  return plat;
-        //}
+        //Getters pour attributs privés
+        int getIdRestaurant()const;
+        std::string getNomRestaurant()const;
+        std::string getAdresse()const;
+        int getCodePostal()const;
+        std::string getVille()const;
+        std::string getTypeRestaurant()const;
+        
+        //Setters pour attributs privés
+        void setIdRestaurant(int idRestaurant);
+        void setNomRestaurant(std::string nomRestaurant);
+        void setAdresse(std::string adresse);
+        void setCodePostal(int codePostal);
+        void setVille(std::string ville);
+        void setTypeRestaurant(std::string typeRestaurant);
 
-        // Méthode pour ajouter un plat au restaurant
+        //Ajouter un plat au restaurant
         void ajouterPlat(const Plat& plat);
-
-        // Méthode publique
+    
+        //Afficher les données du restaurant 
         void afficherRestaurant() const;
-
-    //getters
-    int getIdRestaurant()const;
-    int getCodePostal()const;
-    std::string getNomRestaurant()const;
-    std::string getAdresse()const;
-    std::string getVille()const;
-    //std::string plat()const;
-    std::string getType()const;
-
-    //setters
-    void setIdRestaurant(int idRestaurant);
-    void setCodePostal (int codePostal);
-    void setNomRestaurant(std::string nomRestaurant);
-    void setAdresse(std::string adresse);
-    void setVille(std::string ville);
-    //void setplat(std::string plat)const;
-    void setType(std::string type);
-
-
 };
-#endif
 
+#endif

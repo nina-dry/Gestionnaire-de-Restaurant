@@ -1,33 +1,43 @@
 #ifndef PLATPRINCIPAL_HPP
 #define PLATPRINCIPAL_HPP
-#include<string>
+
+#include <string>
+#include <iostream>
+
 #include"plat.hpp"
 
-class PlatPrincipal : public Plat{//creaion classe pour le plat principal
-    private : //creation attributs privés
+//Création Classe PlatPrincipal
+class PlatPrincipal : public Plat
+{
+    //Attributs privés
+    private : 
         std :: string typePlatPrincipal; 
         std :: string accompagnementPlatPrincipal;
 
-    public://creation du constructeur
-        PlatPrincipal();//constructeur par défaut 
-        ~PlatPrincipal();//desctructeur 
-        PlatPrincipal(std::string typePlatPrincipal, std::string accompagnementPlatPrincipal);
+
+    //Attributs publics
+    public:
+        //Constructeurs
+        PlatPrincipal(); 
+            //Avec caractéristiques de Plat Principal uniquement
+        PlatPrincipal(std::string typePlatPrincipal, std::string accompagnementPlatPrincipal); 
+            //Avec caractéristiques de Plat + Plat Principal
         PlatPrincipal(int idPlat, std::string nomPlat, std::string descriptionPlat, std::string typePlat, double prixPlat, int tempsPrepPlat, std::string typePlatPrincipal, std::string accompagnementPlatPrincipal);
 
-        //Methode publique pour afficher les détails du plat principal
-        void afficherPlatPrincipal() const;
+        //Destructeur
+        ~PlatPrincipal();
 
-        // Nouvelle méthode pour copier les informations d'un Plat vers PlatPrincipal
-        void copierInfosPlat(const Plat& plat);
-
-        //Getters uniquement de plat principal
+        //Getters pour attributs privés
         std::string getTypePlatPrincipal() const;
         std::string getAccompagnementPlatPrincipal() const;
 
-        //Setters
+        //Setters pour attributs privés
         void setTypePlatPrincipal(std::string typePlatPrincipal);
         void setAccompagnementPlatPrincipal(std::string accompagnementplatPrincipal);
-            
+        
+        //Afficher les donnees de platPrincipal (+ Plat grâce à methode virtuelle)
+        virtual void afficherPlat() override;
+
 };
 
-#endif //ENTREE_HPP
+#endif

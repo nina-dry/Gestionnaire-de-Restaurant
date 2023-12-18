@@ -1,80 +1,70 @@
-// Fichier cpp
+#include <string>
 #include <iostream>
-#include "restaurant.hpp"
+
+#include "Restaurant.hpp"
 
 
-// Implémentation du constructeur Restaurant
-Restaurant::Restaurant(int idRestaurant, std::string nomRestaurant, std::string adresse, std::string ville, int codePostal, std::vector<Plat> plats, std::string type)
-    : idRestaurant(idRestaurant), nomRestaurant(nomRestaurant), adresse(adresse), ville(ville), codePostal(codePostal), plats(plats), type(type) {}
+//Constructeur
+Restaurant::Restaurant(){};
+Restaurant::Restaurant(int idRestaurant, std::string nomRestaurant, std::string adresse, int codePostal, std::string ville, std::string typeRestaurant, std::vector<Plat> listePlats) :
+                       idRestaurant(idRestaurant), nomRestaurant(nomRestaurant), adresse(adresse), ville(ville), codePostal(codePostal), typeRestaurant(typeRestaurant), listePlats(listePlats) {}
 
-// Implémentation des getters
+
+//Getters pour les attributs privés
 int Restaurant::getIdRestaurant() const {
     return idRestaurant;
 }
-
-int Restaurant::getCodePostal() const {
-    return codePostal;
-}
-
-std::string Restaurant::getNomRestaurant() const {
+std::string Restaurant::getNomRestaurant() const{
     return nomRestaurant;
 }
-
-std::string Restaurant::getAdresse() const {
+std::string Restaurant::getAdresse() const{
     return adresse;
-} 
-
-std::string Restaurant::getVille() const {
+}
+int Restaurant::getCodePostal() const{
+    return codePostal;
+}
+std::string Restaurant::getVille() const{
     return ville;
-} 
+}
+std::string Restaurant::getTypeRestaurant() const{
+    return typeRestaurant;
+}
 
-std::string Restaurant::getType() const {
-    return type;
 
-} 
-
-// Implémentation des setters
-void Restaurant::setIdRestaurant(int _idRestaurant) {
+//Setters pour attributs privés
+void Restaurant::setIdRestaurant(int _idRestaurant){
     idRestaurant = _idRestaurant;
 }
-void Restaurant::setNomRestaurant(std::string _nomRestaurant) {
+void Restaurant::setNomRestaurant(std::string _nomRestaurant){
     nomRestaurant = _nomRestaurant;
 }
-
-void Restaurant::setAdresse(std::string _adresse) {
-    adresse= _adresse;
+void Restaurant::setAdresse(std::string _adresse){
+    adresse = _adresse;
+}
+void Restaurant::setCodePostal(int _codePostal){
+    codePostal = _codePostal;
+}
+void Restaurant::setVille(std::string _ville){
+    ville = _ville;
+}
+void Restaurant::setTypeRestaurant(std::string _typeRestaurant){
+    typeRestaurant = _typeRestaurant;
 }
 
-void Restaurant::setVille(std::string _ville) {
-    ville= _ville;
-}
 
- void Restaurant::setCodePostal(int _codePostal) {
-    codePostal= _codePostal;
-}
-
-void Restaurant::setType(std::string _type) {
-    type= _type;
-}
-
-// Méthode pour ajouter un plat au restaurant
+//Ajouter un plat au restaurant
 void Restaurant::ajouterPlat(const Plat& plat) {
-    plats.push_back(plat);
+    listePlats.push_back(plat);
 }
 
-
-// Affichage du Restaurant 
-void Restaurant::afficherRestaurant() const {
+//Afficher les données du restaurant
+void Restaurant::afficherRestaurant() const{
     std::cout << "Nom du restaurant : " << nomRestaurant << std::endl;
-    std::cout << "Adresse du restaurant : " << adresse << std::endl;
-    std::cout << "Type du restaurant : " << type << std::endl;
+    std::cout << "Adresse : " << adresse << " " << codePostal << " " << ville << std::endl;
+    std::cout << "Type de Restaurant : " << typeRestaurant << std::endl;
     std::cout << "Plats du restaurant : ";
-
-    for (const Plat& plat : plats) {
+    for (const Plat& plat : listePlats) {
         std::cout << plat.getNomPlat() << ", ";
     }
-
     std::cout << std::endl;
 }
-
-

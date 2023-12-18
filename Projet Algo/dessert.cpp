@@ -1,53 +1,41 @@
-
-// Fichier cpp
-#include <iostream>
-#include "dessert.hpp"
 #include <string>
+#include <iostream>
 
-//constrcuteurs par defaut
-Dessert::Dessert(){
-}
-//destrcuteur par defaut
-Dessert::~Dessert(){
-}
-
-// Implémentation du constructeur Dessert
-Dessert::Dessert(std::string typeDessert, std::string PortionDessert)
-    : Plat(0, "", "", "", 0.0, 0), typeDessert(typeDessert), portionDessert(portionDessert) {}
+#include "dessert.hpp"
 
 
+//Constrcuteurs
+Dessert::Dessert(){}
+Dessert::Dessert(int idPlat, std::string nomPlat, std::string descriptionPlat, std::string typePlat, double prixPlat, int tempsPrepPlat, std::string typeDessert, std::string portionDessert)
+    : Plat(idPlat, nomPlat, descriptionPlat, typePlat, prixPlat, tempsPrepPlat), typeDessert(typeDessert), portionDessert(portionDessert) {}
 
-// Implémentation des getters
+//Destrcuteur
+Dessert::~Dessert(){}
+
+
+//Getters pour attributs privés
 std::string Dessert::getTypeDessert() const {
     return typeDessert;
 }
-
 std::string Dessert::getPortionDessert() const {
     return portionDessert;
 } 
 
-//Setters de tous les attributs privés de boisson
+
+//Setters pour attributs privés
 void Dessert::setTypeDessert(std::string _typeDessert) {
     typeDessert = _typeDessert;
 }
-
 void Dessert::setPortionDessert(std::string _portionDessert) {
     portionDessert = _portionDessert;
 }
 
-// Implémentation de la méthode pour copier les informations de la classe plat dans la classe entrée
-void Dessert::copierInfosPlat(const Plat& plat) {
-    // Appeler les méthodes setters de PlatPrincipal avec les valeurs appropriées de Plat
-    setNomPlat(plat.getNomPlat());
-    setPrixPlat(plat.getPrixPlat());
-    setDescriptionPlat(plat.getDescriptionPlat());
-    setTypePlat(plat.getTypePlat());
-}
 
-// methode pour afficher dessert
-void Dessert::afficherDessert() const {
+//Afficher les donnees des desserts
+void Dessert::afficherPlat() {
+    //Afficher informations de plat 
+    Plat::afficherPlat();
+    // Afficher les informations spécifiques à Dessert
     std::cout << "Type de Dessert : " << typeDessert << std::endl;
     std::cout << "Portion du dessert : " << portionDessert << std::endl;
-    //appeler la méthode afficher plat pour avoir tous les autres attributs communs
-    afficherPlat();
 }

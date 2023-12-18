@@ -3,10 +3,16 @@
 
 #include <string>
 #include <iostream>
+#include <vector>
 
 #include "chef.hpp"
+#include "commande.hpp"
 
-class Chef; // Déclaration anticipée
+
+// Déclaration anticipée
+class Chef; 
+class Commande;
+
 
 //Création Classe Serveur
 class Serveur 
@@ -15,29 +21,56 @@ class Serveur
     private : 
         int idServeur; 
         std::string nomServeur;
-        std::string prenomServeur;
         int ageServeur;
         int anneeExpServeur;
-        int numCmdPrise;
-        int numCmdServie;
+        std::vector<Commande> cmdPrise;
+        std::vector<Commande> cmdServie;
         Chef* chef;
 
+        //Association avec classe Commande
+        Commande commande;
+
+
+    //Attributs publics
     public : 
         //Constructeurs
-        Serveur(int idServeur, std::string nomServeur, std::string prenomServeur, int ageServeur, int anneeExpServeur, int numCmdPrise, int numCmdServie);
+        Serveur();
+        Serveur(int idServeur, std::string nomServeur, int ageServeur, int anneeExpServeur);
 
-        //Getter et Setter pour attributs privés
-        void getIdServeur() const;
+
+        //Getters pour attributs privés
+        int getIdServeur() const;
         std::string getNomServeur() const;
-        std::string getPrenomServeur() const;
-        void setAgeServeur() const;
-        void setAnneeExpServeur() const;
-        void setNumCmdPrise(int _numCmdPrise);
-        void setNumCmdServie(int _numCmdServie);
+        int getAgeServeur() const;
+        int getAnneeExpServeur() const;
 
+
+        //Setters pour attributs privés
+        void setIdServeur(int idServeur);
+        void setNomServeur (std::string NomServeur);
+        void setAgeServeur(int ageServeur);
+        void setAnneeExpServeur(int anneeExpServeur);
+
+
+        //Attribuer commandes aux serveurs
+            //Getters
+        const std::vector<Commande>& getCmdPrise() const;
+        const std::vector<Commande>& getCmdServie() const;
+            //Setters
+        void attribuerCommandePrise(const Commande& commande);
+        void attribuerCommandeServie(const Commande& commande);
+
+
+        //Association avec classe Commande
+        void setCommande(Commande _commande);
+        Commande getCommande() const;
+
+
+        //Assigner un chef au serveur
         void assignerChef(Chef* nouveauChef);
 
-        //Affichage 
+
+        //Afficher les donnees du serveur
         void afficherServeur();
 
 };

@@ -5,40 +5,53 @@
 #include "chef.hpp"
 
 
-//Constructeur
-Cuisinier::Cuisinier(){Plat plat;} //?????????????????
-Cuisinier::Cuisinier(int idCuisinier, std::string nomCuisinier, std::string prenomCuisinier, int ageCuisinier, int anneeExpCuisinier, std::string specialite, int cmdCharge) : 
-                     idCuisinier(idCuisinier), nomCuisinier(nomCuisinier), prenomCuisinier(prenomCuisinier), ageCuisinier(ageCuisinier), anneeExpCuisinier(anneeExpCuisinier), specialite(specialite), cmdCharge(cmdCharge){}
+//Constructeurs
+Cuisinier::Cuisinier() {Plat plat;}
+Cuisinier::Cuisinier(int idCuisinier, std::string nomCuisinier, int ageCuisinier, int anneeExpCuisinier, std::string specialite, int cmdCharge) : 
+                     idCuisinier(idCuisinier), nomCuisinier(nomCuisinier), ageCuisinier(ageCuisinier), anneeExpCuisinier(anneeExpCuisinier), specialite(specialite), cmdCharge(cmdCharge){}
 
 
-//Getter et Setter pour attributs privés
+//Getter pour attributs privés
 int Cuisinier::getIdCuisinier() const {
     return idCuisinier;
 }
-
 std::string Cuisinier::getNomCuisinier() const{
     return nomCuisinier;
 }
-
-std::string Cuisinier::getPrenomCuisinier() const{
-    return prenomCuisinier;
+int Cuisinier::getAgeCuisinier() const{
+    return ageCuisinier;
+}
+int Cuisinier::getAnneeExpCuisinier() const{
+    return anneeExpCuisinier;
+}
+std::string Cuisinier::getSpecialite() const{
+    return specialite;
+}
+int Cuisinier::getCmdCharge() const{
+    return cmdCharge;
 }
 
+
+//Setter pour attributs privés
+void Cuisinier::setIdCuisinier(int _idCuisinier){
+    idCuisinier = _idCuisinier;
+}
+void Cuisinier::setNomCuisinier(std::string _nomCuisinier){
+    nomCuisinier = _nomCuisinier;
+}
 void Cuisinier::setAgeCuisinier(int _ageCuisinier){
     ageCuisinier = _ageCuisinier;
 }
-
 void Cuisinier::setAnneeExpCuisinier(int _anneeExpCuisinier){
     anneeExpCuisinier = _anneeExpCuisinier;
 }
-
 void Cuisinier::setSpecialite(std::string _specialite){
     specialite = _specialite;
 }
-
 void Cuisinier::setCmdCharge(int _cmdCharge){
     cmdCharge = _cmdCharge;
 }
+
 
 //Assigner un chef au cuisinier
 void Cuisinier::assignerChef(Chef* nouveauChef){
@@ -47,48 +60,39 @@ void Cuisinier::assignerChef(Chef* nouveauChef){
 }
 
 
-
-
-
-
-
-//Méthode pour associer un plat sans cardinalité
-void Cuisinier::setPlat(Plat _plat) {
-    plat = _plat;
-}
-//Méthode pour ajouter un plat avec cardinalité
+//Ajouter des plats en charge au cuisinier  
 void Cuisinier::addPlat(Plat _plat) {
     plat_.push_back(_plat);
 }
 
 
-
-
-
-
-
-//Méthode pour retirer un plat avec cardinalité
-Plat Cuisinier::removePlat(Plat _plat) {
-    // Vous devez implémenter la logique pour retirer le plat du vecteur
-    // Retourner le plat retiré ou une valeur par défaut si nécessaire
-    // ...
-
-    // Exemple : temporaire, vous devez ajuster cela selon votre logique
-    Plat platRetire;
-    return platRetire;
-}
-
-
 //Afficher les donnees du cuisinier
 void Cuisinier::afficherCuisinier() {
+    std::cout << "Cuisinier Numero " << idCuisinier << std::endl;
     std::cout << "Nom du Cuisinier : " << nomCuisinier << std::endl;
-    std::cout << "Prenom du Cuisinier : " << prenomCuisinier << std::endl;
     std::cout << "Specialite : " << specialite << std::endl;
-    std::cout << "Commande en charge : " << cmdCharge << std::endl;
+    std::cout << "Numero de commande en charge : " << cmdCharge << std::endl;
     std::cout << "Sous la supervision du chef : " << chef->getNomChef() << std::endl;
-    std::cout << "Plat ajoute au cuisinier SANS cardinalite: " << plat.getNomPlat() << std::endl;
-    std::cout << "Plats associe au cuisinier AVEC cardinalite: ";
+    std::cout << "Plats en cours de preparation : ";
     for (const auto& plat : plat_) {
         std::cout << plat.getNomPlat() << ", " ; }
         std::cout << std::endl;
-    }
+}
+
+
+//Operateur de comparaison supérieur
+bool Cuisinier::estSuperieur(Cuisinier cuisinier){
+return (anneeExpCuisinier > cuisinier.getAnneeExpCuisinier());
+}
+bool operator > (Cuisinier cuisinier1, Cuisinier cuisinier2){
+    return cuisinier1.estSuperieur(cuisinier2);
+}
+
+
+//Operateur de comparaison inférieur
+bool Cuisinier::estInferieur(Cuisinier cuisinier){
+    return (ageCuisinier < cuisinier.getAgeCuisinier());
+}
+bool operator < (Cuisinier cuisinier1, Cuisinier cuisinier2){
+    return cuisinier1.estInferieur(cuisinier2);
+}

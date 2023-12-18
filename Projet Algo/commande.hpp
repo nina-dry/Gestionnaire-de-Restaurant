@@ -1,53 +1,65 @@
-// Fichier hpp
 #ifndef COMMANDE_HPP
 #define COMMANDE_HPP
 
-#include <iostream>
 #include <string>
+#include <iostream>
+#include <vector>
+
 #include "plat.hpp"
 #include "client.hpp"
 
+
+//Déclaration anticipée
 class Client;
 class Plat;
 
-class Commande {
-private:
-    Client* nomClient; // ajout du nom du client 
-    int numCommande;
-    Plat platCommande;  // Ajout du plat
-    
 
+//Création Classe Commande
+class Commande 
+{
+    //Attributs privés
+    private:
+        int numCommande;
+        Client* nomClient;
 
-public:
-    // Constructeur
-    Commande();
-    Commande(int numCommande, Plat platCommande, Client* nomClient);
+        //Association avec Plat  
+        std::vector <Plat> platCommande;
+        std::vector <Plat> prixPlatCommande;
 
-    // Méthodes publiques
-    //void NumCommande(int numCommande) const;
+        //Variable pour le montant total     
+        double montantTotal;
 
-    //void PlatCommande(Plat platCommande) const;
-    double MontantTotal() const;
-    void afficherCommande() const;
+    //Attributs publics
+    public:
+        //Constructeurs
+        Commande();
+        Commande(int numCommande, Client* nomClient);
 
+        //Getter pour attributs privés
+        int getNumCommande() const;
+        Client* getNomClient()const;
 
+        //Setters pour attributs privés
+        void setNumCommande(int numCommande);
+        void setNomClient(Client* nomClient);
 
-    // les getters
-    Client* getNomClient() const;
-    int getNumCommande() const;
-    Plat getPlatCommande() const;
-    
-    
+        //Ajouter plat commandés à la commande
+        void addPlatCommande(Plat _platCommande);
 
-    // les setters
-    void setNomClient(Client* _nomClient);
-    void setNumCommande(int numCommande);
-    void setPlatCommande(const Plat& platCommande);
-    
+        //Ajouter prix du plat à la commande 
+        void addPrixCommande(Plat _prixPlatCommande);
 
+        //Calcul montant total de la commande
+        double getMontantTotal() const;
+
+        //Afficher les donnees des commandes
+        void afficherCommande() const;
+
+        //Operateur de comparaison
+        bool estSuperieur(Commande commande);
 };
 
+//Initialisation de l'opérateur de comparaison
+bool operator>(Commande commande1, Commande commande2);
 
-#endif //COMMANDE_HPP
-
-
+#endif 

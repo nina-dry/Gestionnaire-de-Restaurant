@@ -9,7 +9,7 @@
 #include "plat.hpp"
 
 
-//Déclaration anticipée de la classe Chef
+//Déclaration anticipée
 class Chef;
 
 
@@ -20,31 +20,33 @@ class Cuisinier
     private : 
         int idCuisinier; 
         std::string nomCuisinier;
-        std::string prenomCuisinier;
         int ageCuisinier;
         int anneeExpCuisinier;
         std::string specialite;
         int cmdCharge;
         Chef* chef;
 
-        //Association sans cardinalite
-        Plat plat;
-        //Association avec cardinalite  
+        //Association avec Plat  
         std::vector <Plat> plat_;
 
-        //Plat* platCuisine = nullptr;
 
     //Attributs publics
     public : 
         //Constructeurs
         Cuisinier();
-        Cuisinier(int idCuisinier, std::string nomCuisinier, std::string prenomCuisinier, int ageCuisinier, int anneeExpCuisinier, std::string specialite, int cmdCharge);
+        Cuisinier(int idCuisinier, std::string nomCuisinier, int ageCuisinier, int anneeExpCuisinier, std::string specialite, int cmdCharge);
 
-        //Getter et Setter pour attributs privés
+        //Getter pour attributs privés
         int getIdCuisinier() const;
         std::string getNomCuisinier() const;
-        std::string getPrenomCuisinier() const;
+        int getAgeCuisinier() const;
+        int getAnneeExpCuisinier() const;
+        std::string getSpecialite() const;
+        int getCmdCharge() const;
         
+        //Setters pour attributs privés
+        void setIdCuisinier(int idCuisinier);
+        void setNomCuisinier(std::string specialite);
         void setAgeCuisinier(int ageCuisinier);        
         void setAnneeExpCuisinier(int anneeExpCuisinier);
         void setSpecialite(std::string specialite);
@@ -53,17 +55,19 @@ class Cuisinier
         //Assigner un chef au cuisinier
         void assignerChef(Chef* nouveauChef);
 
-        //Association sans cardinalite
-        void setPlat(Plat _plat);
-        Plat getPlat();
-
-        //Association avec cardinalite  
+        //Ajouter des plats en charge au cuisinier  
         void addPlat(Plat _plat);
-        Plat removePlat(Plat _plat);
 
         //Afficher les donnees du cuisinier
         void afficherCuisinier();
-
+    
+        //Operateur de comparaison
+        bool estSuperieur(Cuisinier cuisinier);    
+        bool estInferieur(Cuisinier cuisinier);    
 };
+
+        //Initialisation des opérateurs de comparaison
+        bool operator>(Cuisinier cuisinier1, Cuisinier cuisinier2);
+        bool operator<(Cuisinier cuisinier1, Cuisinier cuisinier2);
 
 #endif
