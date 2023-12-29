@@ -19,9 +19,9 @@ int main() {
     // Création des objets pour chaque classe
 
     //Cuisinier
-    Cuisinier cuisinier1(1, "Laurent Lise", 35, 8, "Pizza", 125);
-    Cuisinier cuisinier2(2, "Leclerc Theo", 25, 10, "Grill", 126);
-    Cuisinier cuisinier3(3, "Dubois Alice ", 23, 3, "Patisserie", 127);
+    Cuisinier cuisinier1(1, "Laurent Lise", 35, 8, "Pizza", 52);
+    Cuisinier cuisinier2(2, "Leclerc Theo", 25, 10, "Grill", 57);
+    Cuisinier cuisinier3(3, "Dubois Alice ", 23, 3, "Patisserie", 58);
 
     //Serveur
     Serveur serveur1(1, "Leroy Arthur", 40, 12);
@@ -135,11 +135,15 @@ int main() {
     cuisinier3.assignerChef(&chefCuisinier);
 
         //Associer un plat au cuisinier
-    cuisinier1.addPlat(platPrincipal1);
-    cuisinier2.addPlat(platPrincipal1);
-    cuisinier2.addPlat(platPrincipal2);
-    cuisinier2.addPlat(dessert1);
-    cuisinier3.addPlat(dessert2);
+    cuisinier1.addPlat(entree3);
+    cuisinier1.addPlat(platPrincipal4);
+    cuisinier1.addPlat(dessert5);
+    cuisinier1.addPlat(boisson5);
+
+    cuisinier2.addPlat(platPrincipal4);
+    cuisinier2.addPlat(boisson5);
+
+    cuisinier3.addPlat(platPrincipal2);
     cuisinier3.addPlat(boisson1);
 
 
@@ -160,8 +164,8 @@ int main() {
     serveur2.attribuerCommandePrise(commande6);
     serveur2.attribuerCommandePrise(commande8);
     
-    serveur3.attribuerCommandePrise(commande3);
     serveur3.attribuerCommandePrise(commande7);
+    serveur3.attribuerCommandePrise(commande3);
     serveur3.attribuerCommandePrise(commande9);
 
 
@@ -173,7 +177,7 @@ int main() {
     serveur2.attribuerCommandeServie(commande2);
     serveur2.attribuerCommandeServie(commande6);
     
-    serveur3.attribuerCommandeServie(commande3);
+    serveur3.attribuerCommandeServie(commande7);
 
 
     //Commande
